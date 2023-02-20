@@ -29,8 +29,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         Olá <br />
-        {ledStatus ? "1" : "0"}
-        <button onClick={trocaLed}>Troca Led</button>
+        <div className='circle' style={{ backgroundColor: ledStatus ? "green" : "red" }}></div>
+        <button onClick={trocaLed}>{!ledStatus ? "Acende" : "Apaga"} Led</button>
       </header>
     </div>
   );
