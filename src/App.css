@@ -20,6 +20,15 @@ code {
   margin: 20px;
   border: 2px solid black;
 }
+
+.leds{
+  display: flex;
+  width: 100vw;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+
+}
 .App {
   text-align: center;
 }

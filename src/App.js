@@ -1,36 +1,23 @@
 import './App.css';
-import { db } from './utils/firebase';
-import { onValue, ref, set } from 'firebase/database';
-import { useEffect, useState } from 'react';
+import Led from './components/led';
+
 
 function App() {
-  const [ledStatus, setLedStatus] = useState(false);
-
-  useEffect(() => {
-    const starCountRef = ref(db, 'esp32/Led');
-    onValue(starCountRef, (snapshot) => {
-      const data = snapshot.val();
-      console.log(data)
-      setLedStatus(data)
-    });
-  }, [])
-
-  const trocaLed = () =>{
-    set(ref(db, 'esp32'), {
-      Led: !ledStatus,
-    }).then(()=>{
-      console.log('Ok')
-    }).catch((error)=>{
-      console.log(error)
-    })
-  }
 
   return (
     <div className="App">
       <header className="App-header">
-        Olá <br />
-        <div className='circle' style={{ backgroundColor: ledStatus ? "blue" : "#282c34" }}></div>
-        <button onClick={trocaLed}>{!ledStatus ? "Acende" : "Apaga"} Led</button>
+        <h1>Aplicação SENAI</h1> <br />
+        <h2>Simulador de Defeitos em Nuvem</h2> <br />
+        <div className='leds'>
+          <Led name="D1" />
+          <Led name="D2" />
+          <Led name="D3" />
+          <Led name="D4" />
+          <Led name="D5" />
+          <Led name="D6" />
+        </div>
+        
       </header>
     </div>
   );
